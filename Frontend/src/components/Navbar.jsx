@@ -13,25 +13,28 @@ const Navbar = ({log}) => {
           src="https://storage.googleapis.com/a1aa/image/dwx3RchMprraljOKVtxxKWr_zHjq5X1TR7G0ZbQHo3o.jpg"
           width="40"
         />
-        <span className="text-white font-semibold text-lg">Eng Notes</span>
+        <span className="text-white font-semibold text-lg cursor-pointer" onClick={()=>navigate("/")}>Eng Notes</span>
       </div>
 
       {/* Navigation Links */}
+      {log&&<>
+    
       <div className="flex items-center space-x-6">
-        <a onClick={()=>navigate("/yt")} className="text-white text-lg hover:text-gray-300" href="#">
-    Learn
-        </a>
-        <a className="text-white text-sm hover:text-gray-300"  onClick={()=>navigate("/ec")}>
+      <a className="text-white text-sm hover:text-gray-300 cursor-pointer"  onClick={()=>navigate("/ec")}>
           Eng Notes
         </a>
-        <a className="text-white text-sm hover:text-gray-300">
+        <a onClick={()=>navigate("/yt")} className="text-white text-lg hover:text-gray-300 cursor-pointer" href="#">
+    Learn
+        </a>
+      
+        <a className="text-white text-sm hover:text-gray-300 cursor-pointer" onClick={()=>navigate("/sites")}>
           Tech-Updates
         </a>
-        <a className="text-white text-sm hover:text-gray-300">
+        <a className="text-white text-sm hover:text-gray-300 cursor-pointer" onClick={()=>navigate("/chatbot")}>
           Chatbot
         </a>
       {log ?<button onClick={()=>navigate("profile")} className="rounded-full p-[1px]">🌟</button>:null}
-      </div>
+      </div></>}
     </nav>
   );
 };

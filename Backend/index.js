@@ -36,6 +36,7 @@ async function startServer() {
     app.use('/users', createUserRouter(usersCollection));
 
     app.listen(port, () => {
+      // notesCollection.deleteMany({})
       console.log(`🚀 Server is running on port ${port}`);
     });
 

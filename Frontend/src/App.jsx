@@ -7,10 +7,15 @@ import YouTubeSearch from './components/YoutubePlaylist';
 import EngineeringCourses from './components/EngineeringCources';
 import Navbar from './components/Navbar';
 import Feedback from './components/Feedback';
+import FrontPage from './components/Chatbot';
+import Footer from './components/Footer';
+import { ToastContainer } from 'react-toastify';
+import Sites from './components/Sites';
 import './index.css';
 
 const App = () => {
 const [log, setlog ]= useState(false)
+const [state, setstate]= useState(false)
 
 
   return (
@@ -20,15 +25,19 @@ const [log, setlog ]= useState(false)
      
       
           <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login setlog={setlog} />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path='/yt' element={<YouTubeSearch/>}> </Route>
-          <Route path='/ec' element={<EngineeringCourses/>}></Route>
-          <Route path='/feedback' element={<Feedback />}></Route>
-          <Route path='navbar' element={<Navbar/>}></Route>
+          <Route path="/signup" element={<><SignUp /> <Footer/></> } />
+          <Route path="/login" element={<><Login setlog={setlog} />  <Footer/></>} />
+          {log&&<><Route path="/profile" element={<><Profile /> <Footer/></>} />
+          <Route path='/yt' element={<div><YouTubeSearch/>  </div>}> </Route>
+          <Route path='/ec' element={<><EngineeringCourses/><Footer/></>}></Route>
+          <Route path='/feedback' element={<><Feedback /> <Footer/></>}></Route>
+          <Route path='/navbar' element={<><Navbar/><Footer/></>}></Route>
+          <Route path='/chatbot' element={<><FrontPage/><Footer/></>}></Route>
+          <Route path='/footer' element={<Footer />}></Route>
+           <Route path='/sites' element={<Sites/>}></Route> </> }
        
     </Routes>
+<ToastContainer/>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Footer from "./Footer";
 const API_KEY = "AIzaSyCv0nEaQNqAQxUCW5WH_h1HcDcLoa2jkls";
 const BASE_URL = "https://www.googleapis.com/youtube/v3";
 
@@ -30,8 +30,8 @@ const YouTubeSearch = () => {
         }
     };
 
-    return (
-        <div className="p-4 max-w-3xl mx-auto mt-[10vh]">
+    return (<div className="flex justify-between flex-col h-[100vh]">
+        <div className="p-4 max-w-3xl mx-auto mt-[10vh] w-[50vw]">
             <div className="flex mb-4">
                 <input
                     type="text"
@@ -59,7 +59,9 @@ const YouTubeSearch = () => {
                     </div>
                 ))}
             </div>
+       
         </div>
+             <Footer/></div>
     );
 };
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { saveAs } from 'file-saver';
+import { toast } from 'react-toastify';
 
 const Profile = () => {
   const location = useLocation();
@@ -40,12 +41,12 @@ const Profile = () => {
   const handleUpload = async (e) => {
     e.preventDefault();
     if (user.role !== 'teacher') {
-      alert("Only teachers can upload notes!");
+      toast.error("Only teachers can upload notes!");
       return;
     }
 
     const formData = new FormData();
-    formData.append('title', 'Sample Title');
+    formData.append('title', title);
     formData.append('content', note);
     formData.append('uploadedBy', user.username);
     formData.append('role', user.role);
@@ -61,7 +62,7 @@ const Profile = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
-      alert('Note uploaded successfully!');
+      toast.success('Note uploaded successfully!');
       setNote('');
       setPdf(null);
       setBranch('');
@@ -86,10 +87,10 @@ const Profile = () => {
         saveAs(blob, pdf.filename);
       } catch (error) {
         console.error("Error decoding Base64:", error);
-        alert('Failed to download file.');
+        toast.error('Failed to download file.');
       }
     } else {
-      alert('Unable to download the file.');
+      toast.error('Unable to download the file.');
     }
   };
 

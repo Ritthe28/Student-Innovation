@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import {toast, ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const Login = ({setlog}) => {
   const [username, setUsername] = useState('');
@@ -17,7 +20,7 @@ const Login = ({setlog}) => {
     try {
       const response = await axios.post('http://localhost:3000/users/login', { username, password });
       if (response.status === 200) {
-        alert('Login successful!');
+        toast.success("Logged in successfully")
         setlog(true)
         navigate('/profile', { state: { user: response.data.user } });
       }

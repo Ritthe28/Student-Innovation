@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import axios from "axios";
 import { saveAs } from "file-saver";
+import Photo from "./Photo";
 
 const EngineeringCourses = () => {
   const [activeSubMenu, setActiveSubMenu] = useState(null);
@@ -66,7 +67,9 @@ const EngineeringCourses = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white mt-[10vh]">
+    <>
+    <Photo/>
+    <div className="flex min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white">
       {/* Sidebar */}
       <div className="w-1/4 bg-gray-900 p-6 shadow-lg w-[23vw]">
         <h1 className="text-2xl font-bold mb-6">Engineering Notes</h1>
@@ -138,6 +141,7 @@ const EngineeringCourses = () => {
         ):<h1 className="text-3xl">Your Notes are Here </h1>}
       </div>
     </div>
+    </>
   );
 };
 
